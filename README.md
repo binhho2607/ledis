@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Ledis
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+Ledis is a light-weight version of Redis that is implemented as a web-based CLI. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
+1. Fork and clone the Git repository onto your your local device.
+2. While in the directory, run npm install to install the necessary dependencies for the program.
+3. While in the directory, run `npm start` to run the main program. You can then access the program via your browser by navigating to localhost:3000. The port might be different if it is inhabited by another program.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Available Commands
+### `SET [key] [value]`
+Set a string value, always overwriting what is saved under key
 
-### `npm test`
+### `GET [key]`
+Get a string value at key
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `SADD [key] [value1] [value2] ...`
+Add values to set stored at key
 
-### `npm run build`
+### `SREM [key] [value1] [value2] ...`
+Remove values from set
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `SMEMBERS [key]`
+Return array of all members of set
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `SINTER [key1] [key2] ...`
+Set intersection among all set stored in specified keys. Return array of members of the result set
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `KEYS`
+List all available keys
 
-### `npm run eject`
+### `DEL [key]`
+Delete a key
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `EXPIRE [key] [seconds]`
+Set a timeout on a key, seconds is a positive integer (by default a key has no expiration). Return the number of seconds if the timeout is set
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `TIL [key]`
+Query the timeout of a key
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `SAVE`
+Save current state in a snapshot
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### `RESTORE`
+Restore from the last snapshot
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Design and Implementations
+For this project, I used React to build the front-end of the CLI as well as Node.js as the backbone of the program. For the data structures required, I used React states as well as JavaScript's object literals and sets as the underlying data structures for the more abstract data structures. For the expiry feature, I used JavaScript's built-in Data data type to store the timeout time for the strings, and if the current time exceeds the timeout limit, then the key-value pair of the string will be deleted. For the snapshot feature, I used React state to store the current data state when the user calls `SAVE`, and when the user calls `RESTORE`, I set the data state of the program to the data state stored earlier.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Challenges
+This project is quite challenging because I am not proficient at utilizing CLIs myself, so I have to figure how it works at its core before jumping into building Ledis. Also, I have not used Redis itself before, so this project is very interesting from my perspective.
