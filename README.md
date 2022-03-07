@@ -17,3 +17,33 @@ Set a string value, always overwriting what is saved under key
 
 ### `GET [key]`
 Get a string value at key
+
+### `SADD [key] [value1] [value2] ...`
+Add values to set stored at key
+
+### `SREM [key] [value1] [value2] ...`
+Remove values from set
+
+### `SMEMBERS [key]`
+Return array of all members of set
+
+### `SINTER [key1] [key2] ...`
+Set intersection among all set stored in specified keys. Return array of members of the result set
+
+### `KEYS`
+List all available keys
+
+### `DEL [key]`
+Delete a key
+
+### `EXPIRE [key] [seconds]`
+Set a timeout on a key, seconds is a positive integer (by default a key has no expiration). Return the number of seconds if the timeout is set
+
+### `TIL [key]`
+Query the timeout of a key
+
+### `SAVE`
+Save current state in a snapshot
+
+### `RESTORE`
+Restore from the last snapshot
