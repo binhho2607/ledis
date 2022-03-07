@@ -6,7 +6,7 @@ import InputLine from "./components/InputLine";
 
 function App() {
 
-    const [commands, setCommands] = useState([])
+    const [commands, setCommands] = useState([['Welcome to Ledis!']])
     const [strings, setStrings] = useState({})
     const [expire, setExpire] = useState({})
     const [snapshot, setSnapshot] = useState({strings: {}, expire: {}})
