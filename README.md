@@ -47,3 +47,10 @@ Save current state in a snapshot
 
 ### `RESTORE`
 Restore from the last snapshot
+
+
+## Design and Implementations
+For this project, I used React to build the front-end of the CLI as well as Node.js as the backbone of the program. For the data structures required, I used React states as well as JavaScript's object literals and sets as the underlying data structures for the more abstract data structures. For the expiry feature, I used JavaScript's built-in Data data type to store the timeout time for the strings, and if the current time exceeds the timeout limit, then the key-value pair of the string will be deleted. For the snapshot feature, I used React state to store the current data state when the user calls `SAVE`, and when the user calls `RESTORE`, I set the data state of the program to the data state stored earlier.
+
+## Challenges
+This project is quite challenging because I am not proficient at utilizing CLIs myself, so I have to figure how it works at its core before jumping into building Ledis. Also, I have not used Redis itself before, so this project is very interesting from my perspective.
